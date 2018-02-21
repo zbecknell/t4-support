@@ -14,6 +14,10 @@ Currently only `C#` embedded highlighting is supported.
 
 ## Release Notes
 
+### 0.1.3
+
+Add extension icon.
+
 ### 0.1.2
 
 Fixed sloppy highlighting.

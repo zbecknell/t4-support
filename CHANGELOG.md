@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 - Better highlighting to differentiate code blocks.
 
+## [0.1.3] - 2018-02-21
+- Add extension icon.
+
 ## [0.1.2] - 2018-02-21
 - Fixed sloppy highlighting.
 
