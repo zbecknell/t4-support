@@ -3,8 +3,31 @@
 	"name": "T4 Text Template",
 	"patterns": [
 		{
-			"begin": "<(#|#=|#@)",
+			"match": "(<#@)(.*)(#>)",
+			"name": "constant.tt",
+			"captures": {
+				"1": { "name": "constant.tt" },
+				"2": {
+					"patterns": [
+						{"include": "source.cs"}
+					]
+				},
+				"3": { "name": "constant.tt" }
+			}
+		},
+		{
+			"begin": "(<#=|<#)",
+			"beginCaptures": {
+				"0":{
+					"name": "constant.tt"
+				}
+			},
 			"end": "#>",
+			"endCaptures": {
+				"0": {
+					"name": "constant.tt"
+				}
+			},
 			"patterns": [
 				{ "include": "source.cs" }
 			]

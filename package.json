@@ -2,7 +2,7 @@
     "name": "t4-support",
     "displayName": "T4 Support",
     "description": "Provides syntax highlighting for T4 Text Templates.",
-    "version": "0.1.3",
+    "version": "0.2.0",
     "publisher": "zbecknell",
     "icon": "assets/icon.png",
     "engines": {
