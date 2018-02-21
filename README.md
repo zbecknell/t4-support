@@ -10,9 +10,13 @@ Provides `C#` syntax highlighting for embedded code within T4 templates.
 
 ## Known Issues
 
-- Currently only `C#` embedded highlighting is supported.
+Currently only `C#` embedded highlighting is supported.
 
 ## Release Notes
+
+### 0.2.2
+
+Spruced up inline code regex, which fixed an issue where code failed to exit a block.
 
 ### 0.2.1
 

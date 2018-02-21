@@ -3,7 +3,7 @@
 	"name": "T4 Text Template",
 	"patterns": [
 		{
-			"match": "(<#@|<#=|<#\\+|<#)(.*)(#>)",
+			"match": "(<#@|<#=|<#\\+|<#)(.+?)(#>)",
 			"name": "constant.tt",
 			"captures": {
 				"1": { "name": "constant.tt" },
@@ -12,11 +12,12 @@
 						{"include": "source.cs"}
 					]
 				},
-				"3": { "name": "constant.tt" }
+				"3": { "name": "constant.tt" },
+				"4": { "name": "constant.tt" }
 			}
 		},
 		{
-			"begin": "(^|\\G)(\\s*)(<#=|<#|<#\\+)(\\s+[^`~]*)?$",
+			"begin": "(^|\\G)(\\s*)(<#=|<#@|<#|<#\\+)(\\s+[^`~]*)?$",
 			"beginCaptures": {
 				"3":{
 					"name": "constant.tt"
