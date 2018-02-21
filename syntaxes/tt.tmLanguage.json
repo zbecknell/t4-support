@@ -1,0 +1,31 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "T4 Text Template",
+	"patterns": [
+		{
+			"begin": "<#",
+			"end": "#>",
+			"include": "source.cs"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.tt",
+				"match": "\\b(if|while|for|return)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.tt",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.tt",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.tt"
+}
