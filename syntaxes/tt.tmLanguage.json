@@ -3,29 +3,12 @@
 	"name": "T4 Text Template",
 	"patterns": [
 		{
-			"begin": "<#",
+			"begin": "<(#|#=|#@)",
 			"end": "#>",
-			"include": "source.cs"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.tt",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.tt",
-			"begin": "\"",
-			"end": "\"",
 			"patterns": [
-				{
-					"name": "constant.character.escape.tt",
-					"match": "\\\\."
-				}
+				{ "include": "source.cs" }
 			]
 		}
-	},
+	],
 	"scopeName": "source.tt"
 }
