@@ -3,7 +3,7 @@
 	"name": "T4 Text Template",
 	"patterns": [
 		{
-			"match": "(<#@)(.*)(#>)",
+			"match": "(<#@|<#=|<#\\+|<#)(.*)(#>)",
 			"name": "constant.tt",
 			"captures": {
 				"1": { "name": "constant.tt" },
@@ -16,20 +16,29 @@
 			}
 		},
 		{
-			"begin": "(<#=|<#)",
+			"begin": "(^|\\G)(\\s*)(<#=|<#|<#\\+)(\\s+[^`~]*)?$",
 			"beginCaptures": {
-				"0":{
+				"3":{
 					"name": "constant.tt"
 				}
 			},
-			"end": "#>",
+			"end": "(^|\\G)(#>)\\s*$",
 			"endCaptures": {
 				"0": {
 					"name": "constant.tt"
 				}
 			},
 			"patterns": [
-				{ "include": "source.cs" }
+				{ 
+					"begin": "(^|\\G)(\\s*)(.*)",
+					"while": "(^|\\G)(?!(#>)\\s*$)",
+					"contentName": "meta.embedded.block.csharp",
+					"patterns": [
+						{
+							"include": "source.cs"
+						}
+					]
+				}
 			]
 		}
 	],

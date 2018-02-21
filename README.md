@@ -11,9 +11,12 @@ Provides `C#` syntax highlighting for embedded code within T4 templates.
 ## Known Issues
 
 - Currently only `C#` embedded highlighting is supported.
-- Unmatched curly braces within code blocks disrupt escape out of the code block.
 
 ## Release Notes
+
+### 0.2.1
+
+Fix issue where curly braces inside code blocks prevented escaping from block.
 
 ### 0.2.0
 
