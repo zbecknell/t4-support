@@ -2,7 +2,7 @@
     "name": "t4-support",
     "displayName": "T4 Support",
     "description": "Provides syntax highlighting for T4 Text Templates.",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "publisher": "zbecknell",
     "icon": "assets/icon.png",
     "engines": {
@@ -21,15 +21,21 @@
     },
     "contributes": {
         "languages": [{
-            "id": "tt",
-            "aliases": ["T4 Text Template", "tt"],
+            "id": "t4",
+            "aliases": ["T4 Text Template", "t4", "tt"],
             "extensions": [".tt"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
-            "language": "tt",
-            "scopeName": "source.tt",
-            "path": "./syntaxes/tt.tmLanguage.json"
-        }]
+            "language": "t4",
+            "scopeName": "source.t4",
+            "path": "./syntaxes/t4.tmLanguage.json"
+        }],
+        "snippets": [
+            {
+                "language": "t4",
+                "path": "./snippets/t4.json"
+            }
+        ]
     }
 }

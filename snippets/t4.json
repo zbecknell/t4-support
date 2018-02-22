@@ -1,0 +1,42 @@
+{
+    "Insert language directive":{
+        "prefix": "language",
+        "body": "<#@ template language=\"${1:C#}\" #>$0",
+        "description": "Insert language directive"
+    },
+    "Insert output directive":{
+        "prefix": "output",
+        "body": "<#@ output extension=\"${1:.cs}\" #>$0",
+        "description": "Insert output directive"
+    },
+    "Insert assembly directive":{
+        "prefix": "assembly",
+        "body": "<#@ assembly name=\"${1:System.xml}\" #>$0",
+        "description": "Insert assembly directive"
+    },
+    "Insert import directive":{
+        "prefix": "import",
+        "body": "<#@ import namespace=\"${1:System.Xml}\" #>$0",
+        "description": "Insert import directive"
+    },
+    "Insert include directive":{
+        "prefix": "include",
+        "body": "<#@ include file=\"${1:C:\\Test.txt}\" #>$0",
+        "description": "Insert include directive"
+    },
+    "WriteLine":{
+        "prefix": "WriteLine",
+        "body": "WriteLine(\"$0\");",
+        "description": "Writes a line of text to the output"
+    },
+    "Write":{
+        "prefix": "Write",
+        "body": "Write(\"$0\");",
+        "description": "Writes text to the output"
+    },
+    "Error":{
+        "prefix": "Error",
+        "body": "Error(\"$0\");",
+        "description": "Sends an error message to the Visual Studio output"
+    }
+}

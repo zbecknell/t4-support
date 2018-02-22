@@ -1,6 +1,6 @@
 # T4 Support
 
-Very basic language support for T4 Text Templates (.tt) files. 
+Very basic language support for T4 Text Templates (.tt) files.
 
 For more information about using T4 templates, see [Code Generation and T4 Text Templates](https://docs.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates).
 
@@ -13,6 +13,10 @@ Provides `C#` syntax highlighting for embedded code within T4 templates.
 Currently only `C#` embedded highlighting is supported.
 
 ## Release Notes
+
+### 0.3.0
+
+Added snippets!
 
 ### 0.2.2
 

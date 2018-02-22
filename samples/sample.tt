@@ -1,0 +1,26 @@
+<#@ output extension=".cs" #>
+<#@ template language="C#" #>
+<#@ assembly name="System.xml" #>
+<#@ import namespace="System.Xml" #>
+<#@ include file="C:\Test.txt" #>
+
+public class Test
+{
+    <# foreach(var thing in things)
+    {
+    #>
+    public <#= thing.Type #> <#= thing.Name #>;
+    <#
+    }
+    #>
+}
+
+<#
+    if(foo == bar){
+        return foo;
+    }
+
+    public void Foo(bar){
+        var foo = bar + "test";
+    }
+#>

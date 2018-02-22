@@ -4,35 +4,42 @@
 	"patterns": [
 		{
 			"match": "(<#@|<#=|<#\\+|<#)(.+?)(#>)",
-			"name": "constant.tt",
+			"name": "constant.t4",
 			"captures": {
-				"1": { "name": "constant.tt" },
+				"1": { "name": "constant.t4" },
 				"2": {
 					"patterns": [
 						{"include": "source.cs"}
 					]
 				},
-				"3": { "name": "constant.tt" },
-				"4": { "name": "constant.tt" }
+				"3": { "name": "constant.t4" },
+				"4": { "name": "constant.t4" }
 			}
 		},
 		{
-			"begin": "(^|\\G)(\\s*)(<#=|<#@|<#|<#\\+)(\\s+[^`~]*)?$",
+			"begin": "(^|\\G)(\\s*)(<#=|<#@|<#|<#\\+)(.+?)?$",
 			"beginCaptures": {
 				"3":{
-					"name": "constant.tt"
+					"name": "constant.t4"
+				},
+				"4":{
+					"patterns": [
+						{
+							"include": "source.cs"
+						}
+					]
 				}
 			},
-			"end": "(^|\\G)(#>)\\s*$",
+			"end": "(^|\\G)(\\s*#>)\\s*$",
 			"endCaptures": {
 				"0": {
-					"name": "constant.tt"
+					"name": "constant.t4"
 				}
 			},
 			"patterns": [
-				{ 
-					"begin": "(^|\\G)(\\s*)(.*)",
-					"while": "(^|\\G)(?!(#>)\\s*$)",
+				{
+					"begin": "(^|\\G)(.+?)",
+					"while": "(^|\\G)(?!(\\s*#>)\\s*$)",
 					"contentName": "meta.embedded.block.csharp",
 					"patterns": [
 						{
@@ -43,5 +50,5 @@
 			]
 		}
 	],
-	"scopeName": "source.tt"
+	"scopeName": "source.t4"
 }
