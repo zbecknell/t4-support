@@ -14,6 +14,10 @@ Currently only `C#` embedded highlighting is supported.
 
 ## Release Notes
 
+### 0.3.1
+
+Minor fix in syntax highlighting.
+
 ### 0.3.0
 
 Added snippets!

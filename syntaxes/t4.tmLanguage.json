@@ -17,7 +17,7 @@
 			}
 		},
 		{
-			"begin": "(^|\\G)(\\s*)(<#=|<#@|<#|<#\\+)(.+?)?$",
+			"begin": "(^|\\G)(\\s*)(<#=|<#@|<#|<#\\+)(.*?)?$",
 			"beginCaptures": {
 				"3":{
 					"name": "constant.t4"
@@ -38,7 +38,7 @@
 			},
 			"patterns": [
 				{
-					"begin": "(^|\\G)(.+?)",
+					"begin": "(^|\\G)(.*?)",
 					"while": "(^|\\G)(?!(\\s*#>)\\s*$)",
 					"contentName": "meta.embedded.block.csharp",
 					"patterns": [
