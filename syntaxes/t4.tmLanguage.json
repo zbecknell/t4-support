@@ -3,7 +3,7 @@
 	"name": "T4 Text Template",
 	"patterns": [
 		{
-			"match": "(<#@|<#=|<#\\+|<#)(.+?)(#>)",
+			"match": "(<#@|<#=|<#\\+|<#)(.*?)(#>)",
 			"name": "constant.t4",
 			"captures": {
 				"1": { "name": "constant.t4" },
@@ -12,35 +12,33 @@
 						{"include": "source.cs"}
 					]
 				},
-				"3": { "name": "constant.t4" },
-				"4": { "name": "constant.t4" }
+				"3": { "name": "constant.t4" }
 			}
 		},
 		{
-			"begin": "(^|\\G)(\\s*)(<#=|<#@|<#|<#\\+)(.*?)?$",
+			"begin": "(<#=|<#@|<#\\+|<#)",
 			"beginCaptures": {
-				"3":{
+				"1":{
 					"name": "constant.t4"
-				},
-				"4":{
+				}
+			},
+			"end": "(.*?)(#>).*?",
+			"endCaptures": {
+				"1": {
 					"patterns": [
 						{
 							"include": "source.cs"
 						}
 					]
-				}
-			},
-			"end": "(^|\\G)(\\s*#>)\\s*$",
-			"endCaptures": {
-				"0": {
+				},
+				"2": {
 					"name": "constant.t4"
 				}
 			},
 			"patterns": [
 				{
-					"begin": "(^|\\G)(.*?)",
-					"while": "(^|\\G)(?!(\\s*#>)\\s*$)",
-					"contentName": "meta.embedded.block.csharp",
+					"begin": "(^|\\G)(?!((<#@|<#=|<#\\+|<#).*?))",
+					"while": "(^|\\G)(?!((.*?)#>))",
 					"patterns": [
 						{
 							"include": "source.cs"
