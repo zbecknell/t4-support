@@ -66,7 +66,6 @@ function activate(context) {
             }
             index += 2;
         });
-        console.log(blocks.length);
         activeEditor.setDecorations(bracketDecorationType, brackets);
         activeEditor.setDecorations(codeBlockDecorationType, blocks);
     }
