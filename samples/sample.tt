@@ -6,6 +6,9 @@
 
 public class Test
 {
+    public ID ID = new ID({"guid-thing"});
+    public string Name = "<#= thing.Name #>"
+
     <# foreach(var thing in things)
     {
     #>
