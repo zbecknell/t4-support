@@ -14,6 +14,10 @@ Currently only `C#` embedded highlighting is supported.
 
 ## Release Notes
 
+### 0.4.0
+
+Add background highlighting of open/closing brackets (<#, #>) and code blocks for better visual separation.
+
 ### 0.3.2
 
 Further fixes for syntax highlighting.

@@ -2,16 +2,19 @@
     "name": "t4-support",
     "displayName": "T4 Support",
     "description": "Provides syntax highlighting for T4 Text Templates.",
-    "version": "0.3.2",
+    "version": "0.4.0",
     "publisher": "zbecknell",
     "icon": "assets/icon.png",
+    "activationEvents": [
+        "onLanguage:t4"
+    ],
     "engines": {
-        "vscode": "*"
+        "vscode": "^1.0.0"
     },
     "categories": [
         "Languages"
     ],
-    "bugs":{
+    "bugs": {
         "url": "https://github.com/zbecknell/t4-support/issues"
     },
     "homepage": "https://github.com/zbecknell/t4-support/blob/master/README.md",
@@ -20,22 +23,44 @@
         "url": "https://github.com/zbecknell/t4-support.git"
     },
     "contributes": {
-        "languages": [{
-            "id": "t4",
-            "aliases": ["T4 Text Template", "t4", "tt"],
-            "extensions": [".tt"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "t4",
-            "scopeName": "source.t4",
-            "path": "./syntaxes/t4.tmLanguage.json"
-        }],
+        "languages": [
+            {
+                "id": "t4",
+                "aliases": [
+                    "T4 Text Template",
+                    "t4",
+                    "tt"
+                ],
+                "extensions": [
+                    ".tt"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "t4",
+                "scopeName": "source.t4",
+                "path": "./syntaxes/t4.tmLanguage.json"
+            }
+        ],
         "snippets": [
             {
                 "language": "t4",
                 "path": "./snippets/t4.json"
             }
         ]
+    },
+    "main": "./out/extension",
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "vscode": "^1.1.5",
+        "typescript": "^2.5.3",
+        "@types/node": "7.0.4"
     }
 }
