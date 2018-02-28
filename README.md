@@ -6,7 +6,11 @@ For more information about using T4 templates, see [Code Generation and T4 Text 
 
 ## Features
 
-Provides `C#` syntax highlighting for embedded code within T4 templates.
+Provides `C#` syntax highlighting for embedded code within T4 templates as well as snippets for common directives and functions.
+
+![Light theme screenshot](./assets/screenshot1.png)
+
+![Dark theme screenshot](./assets/screenshot2.png)
 
 ## Known Issues
 
