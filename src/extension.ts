@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 
 	function updateDecorations() {
-		if (!activeEditor || !fileTypeSupported(activeEditor)) {
+		if (!activeEditor || !isT4File(activeEditor)) {
 			return;
 		}
 		const regEx = /(<#@|<#\+|<#=|<#|#>)+/g;
@@ -85,7 +85,7 @@ export function activate(context: vscode.ExtensionContext) {
 		activeEditor.setDecorations(codeBlockDecorationType, blocks);
 	}
 
-	function fileTypeSupported(editor: vscode.TextEditor): boolean{
-		return editor.document.fileName.endsWith(".tt");
+	function isT4File(editor: vscode.TextEditor): boolean{
+		return editor.document.languageId == "t4";
 	}
 }	
