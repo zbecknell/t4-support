@@ -18,6 +18,10 @@ Currently only `C#` embedded highlighting is supported.
 
 ## Release Notes
 
+### 0.4.3
+
+Fixed compatibility for files without `.tt` extension. Thank you @awglyde!
+
 ### 0.4.0
 
 Add background highlighting of open/closing brackets (<#, #>) and code blocks for better visual separation.

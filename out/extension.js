@@ -41,7 +41,7 @@ function activate(context) {
         timeout = setTimeout(updateDecorations, 200);
     }
     function updateDecorations() {
-        if (!activeEditor || !fileTypeSupported(activeEditor)) {
+        if (!activeEditor || !isT4File(activeEditor)) {
             return;
         }
         var regEx = /(<#@|<#\+|<#=|<#|#>)+/g;
@@ -69,8 +69,8 @@ function activate(context) {
         activeEditor.setDecorations(bracketDecorationType, brackets);
         activeEditor.setDecorations(codeBlockDecorationType, blocks);
     }
-    function fileTypeSupported(editor) {
-        return editor.document.fileName.endsWith(".tt");
+    function isT4File(editor) {
+        return editor.document.languageId == "t4";
     }
 }
 exports.activate = activate;
