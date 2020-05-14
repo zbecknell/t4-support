@@ -50,10 +50,10 @@ export function activate(context: vscode.ExtensionContext) {
 		if (!activeEditor || !isT4File(activeEditor)) {
 			return;
 		}
-		const regEx = /(<#@|<#\+|<#=|<#|#>)+/g;
+		const regEx = /(<#@|<#\+|<#=|<#)|(#>)+/g;
 		const text = activeEditor.document.getText();
 		const brackets: vscode.DecorationOptions[] = [];
-		let match;
+		let match: RegExpExecArray;
 		while (match = regEx.exec(text)) {
 			const startPos = activeEditor.document.positionAt(match.index);
 			const endPos = activeEditor.document.positionAt(match.index + match[0].length);
@@ -73,9 +73,9 @@ export function activate(context: vscode.ExtensionContext) {
 				const start = brackets[index];
 				const end = brackets[index + 1];
 
-				const decoration = { range: new vscode.Range(start.range.end, end.range.start) };
+				const decoration = { range: new vscode.Range(start.range.end, end.range.start), hoverMessage: "" };
 
-				blocks.push(decoration);			
+				blocks.push(decoration);
 			}
 
 			index += 2;
@@ -88,4 +88,4 @@ export function activate(context: vscode.ExtensionContext) {
 	function isT4File(editor: vscode.TextEditor): boolean{
 		return editor.document.languageId == "t4";
 	}
-}	
+}

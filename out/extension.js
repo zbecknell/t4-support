@@ -44,7 +44,7 @@ function activate(context) {
         if (!activeEditor || !isT4File(activeEditor)) {
             return;
         }
-        var regEx = /(<#@|<#\+|<#=|<#|#>)+/g;
+        var regEx = /(<#@|<#\+|<#=|<#)|(#>)+/g;
         var text = activeEditor.document.getText();
         var brackets = [];
         var match;
@@ -61,7 +61,7 @@ function activate(context) {
             if (index + 1 < max) {
                 var start = brackets[index];
                 var end = brackets[index + 1];
-                var decoration = { range: new vscode.Range(start.range.end, end.range.start) };
+                var decoration = { range: new vscode.Range(start.range.end, end.range.start), hoverMessage: "" };
                 blocks.push(decoration);
             }
             index += 2;

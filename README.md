@@ -18,6 +18,10 @@ Currently only `C#` embedded highlighting is supported.
 
 ## Release Notes
 
+### 0.4.4
+
+Fix inverted highlighting on back-to-back blocks.
+
 ### 0.4.3
 
 Fixed compatibility for files without `.tt` extension. Thank you @awglyde!

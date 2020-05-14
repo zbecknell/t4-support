@@ -12,7 +12,7 @@ public class Test
     <# foreach(var thing in things)
     {
     #>
-    public <#= thing.Type #> <#= thing.Name #>;
+    public <#= thing.Type #><#= thing.Name #>;
     <#
     }
     #>
