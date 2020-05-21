@@ -32,7 +32,8 @@
                     "tt"
                 ],
                 "extensions": [
-                    ".tt"
+                    ".tt",
+                    ".ttinclude"
                 ],
                 "configuration": "./language-configuration.json"
             }
