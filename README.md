@@ -1,6 +1,6 @@
 # T4 Support
 
-Very basic language support for T4 Text Templates (.tt) files.
+Very basic language support for T4 Text Templates (.tt, .ttinclude) files.
 
 For more information about using T4 templates, see [Code Generation and T4 Text Templates](https://docs.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates).
 
