@@ -18,6 +18,10 @@ Currently only `C#` embedded highlighting is supported.
 
 ## Release Notes
 
+### 0.5.0
+
+Recognize `.ttinclude` files.
+
 ### 0.4.4
 
 Fix inverted highlighting on back-to-back blocks.

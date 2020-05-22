@@ -1,0 +1,7 @@
+<# foreach(var thing in things)
+{
+#>
+public <#= thing.Type #><#= thing.Name #>;
+<#
+}
+#>
