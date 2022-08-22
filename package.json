@@ -32,6 +32,7 @@
                     "tt"
                 ],
                 "extensions": [
+                    ".t4",
                     ".tt",
                     ".ttinclude"
                 ],
