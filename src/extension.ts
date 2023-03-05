@@ -1,7 +1,10 @@
+import * as fs from 'fs';
+import * as path from 'path';
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
 
+	context.subscriptions.push(vscode.languages.registerDefinitionProvider({ language: 't4' }, new T4DefinitionProvider()));
 	const bracketDecorationType = vscode.window.createTextEditorDecorationType({
 		light: {
 			backgroundColor: 'rgba(255, 100, 0, .2)'
@@ -88,4 +91,54 @@ export function activate(context: vscode.ExtensionContext) {
 	function isT4File(editor: vscode.TextEditor): boolean{
 		return editor.document.languageId == "t4";
 	}
+}
+
+class T4DefinitionProvider implements vscode.DefinitionProvider {
+  public provideDefinition(
+    document: vscode.TextDocument,
+    position: vscode.Position,
+    token: vscode.CancellationToken
+  ): vscode.ProviderResult<vscode.Definition | vscode.DefinitionLink[]> {
+    return new Promise((resolve, reject) => {
+      const line = document.lineAt(position.line).text;
+      const regEx = /<#@\s*include\s*file\s*=\s*"(?<filepath>[^"]*)"\s*#>/dg;
+
+      const match: RegExpExecArray = regEx.exec(line);
+      if (
+        !match ||
+        position.character < (match as any).indices.groups.filepath[0] ||
+        position.character > (match as any).indices.groups.filepath[1]
+      ) {
+        reject();
+        return;
+      }
+
+      let definitionFilepath = (match as any).groups.filepath;
+      if (!path.isAbsolute(definitionFilepath)) {
+        const dirName = path.dirname(document.fileName);
+        definitionFilepath = path.join(dirName, definitionFilepath);
+      }
+
+      if (!fs.existsSync(definitionFilepath)) {
+        reject();
+        return;
+      }
+
+      const originStart = (match as any).indices.groups.filepath[0];
+      const originEnd = (match as any).indices.groups.filepath[1];
+      resolve([
+        {
+          originSelectionRange: new vscode.Range(
+            position.with({ character: originStart }),
+            position.with({ character: originEnd })
+          ),
+          targetUri: vscode.Uri.file(definitionFilepath),
+          targetRange: new vscode.Range(
+            new vscode.Position(0, 0),
+            new vscode.Position(0, 0)
+          ),
+        },
+      ]);
+    });
+  }
 }
