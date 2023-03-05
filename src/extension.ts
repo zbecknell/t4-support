@@ -104,11 +104,9 @@ class T4DefinitionProvider implements vscode.DefinitionProvider {
       const regEx = /<#@\s*include\s*file\s*=\s*"(?<filepath>[^"]*)"\s*#>/dg;
 
       const match: RegExpExecArray = regEx.exec(line);
-      if (
-        !match ||
-        position.character < (match as any).indices.groups.filepath[0] ||
-        position.character > (match as any).indices.groups.filepath[1]
-      ) {
+      const originStart = (match as any)?.indices.groups.filepath[0];
+      const originEnd = (match as any)?.indices.groups.filepath[1];
+      if (!match || position.character < originStart || position.character > originEnd) {
         reject();
         return;
       }
@@ -124,8 +122,6 @@ class T4DefinitionProvider implements vscode.DefinitionProvider {
         return;
       }
 
-      const originStart = (match as any).indices.groups.filepath[0];
-      const originEnd = (match as any).indices.groups.filepath[1];
       resolve([
         {
           originSelectionRange: new vscode.Range(

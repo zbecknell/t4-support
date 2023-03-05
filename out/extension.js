@@ -86,9 +86,9 @@ var T4DefinitionProvider = /** @class */ (function () {
             var line = document.lineAt(position.line).text;
             var regEx = /<#@\s*include\s*file\s*=\s*"(?<filepath>[^"]*)"\s*#>/dg;
             var match = regEx.exec(line);
-            if (!match ||
-                position.character < match.indices.groups.filepath[0] ||
-                position.character > match.indices.groups.filepath[1]) {
+            var originStart = match === null || match === void 0 ? void 0 : match.indices.groups.filepath[0];
+            var originEnd = match === null || match === void 0 ? void 0 : match.indices.groups.filepath[1];
+            if (!match || position.character < originStart || position.character > originEnd) {
                 reject();
                 return;
             }
@@ -101,8 +101,6 @@ var T4DefinitionProvider = /** @class */ (function () {
                 reject();
                 return;
             }
-            var originStart = match.indices.groups.filepath[0];
-            var originEnd = match.indices.groups.filepath[1];
             resolve([
                 {
                     originSelectionRange: new vscode.Range(position.with({ character: originStart }), position.with({ character: originEnd })),
