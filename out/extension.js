@@ -1,7 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.activate = void 0;
+var fs = require("fs");
+var path = require("path");
 var vscode = require("vscode");
 function activate(context) {
+    context.subscriptions.push(vscode.languages.registerDefinitionProvider({ language: 't4' }, new T4DefinitionProvider()));
     var bracketDecorationType = vscode.window.createTextEditorDecorationType({
         light: {
             backgroundColor: 'rgba(255, 100, 0, .2)'
@@ -74,4 +78,38 @@ function activate(context) {
     }
 }
 exports.activate = activate;
+var T4DefinitionProvider = /** @class */ (function () {
+    function T4DefinitionProvider() {
+    }
+    T4DefinitionProvider.prototype.provideDefinition = function (document, position, token) {
+        return new Promise(function (resolve, reject) {
+            var line = document.lineAt(position.line).text;
+            var regEx = /<#@\s*include\s*file\s*=\s*"(?<filepath>[^"]*)"\s*#>/dg;
+            var match = regEx.exec(line);
+            var originStart = match === null || match === void 0 ? void 0 : match.indices.groups.filepath[0];
+            var originEnd = match === null || match === void 0 ? void 0 : match.indices.groups.filepath[1];
+            if (!match || position.character < originStart || position.character > originEnd) {
+                reject();
+                return;
+            }
+            var definitionFilepath = match.groups.filepath;
+            if (!path.isAbsolute(definitionFilepath)) {
+                var dirName = path.dirname(document.fileName);
+                definitionFilepath = path.join(dirName, definitionFilepath);
+            }
+            if (!fs.existsSync(definitionFilepath)) {
+                reject();
+                return;
+            }
+            resolve([
+                {
+                    originSelectionRange: new vscode.Range(position.with({ character: originStart }), position.with({ character: originEnd })),
+                    targetUri: vscode.Uri.file(definitionFilepath),
+                    targetRange: new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0)),
+                },
+            ]);
+        });
+    };
+    return T4DefinitionProvider;
+}());
 //# sourceMappingURL=extension.js.map

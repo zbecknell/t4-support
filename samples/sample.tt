@@ -3,6 +3,7 @@
 <#@ assembly name="System.xml" #>
 <#@ import namespace="System.Xml" #>
 <#@ include file="C:\Test.txt" #>
+<#@ include file = "sample-include.ttinclude" #>
 
 public class Test
 {
